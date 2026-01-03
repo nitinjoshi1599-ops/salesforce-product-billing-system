@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="My Bills">
+        <template if:true={bills.data}>
+            <lightning-datatable 
+                key-field="id"
+                data={bills.data}
+                columns={columns}>
+            </lightning-datatable>
+        </template>
+
+        <template if:true={bills.error}>
+            <p>Error loading bills: {bills.error}</p>
+        </template>
+    </lightning-card>
+</template>

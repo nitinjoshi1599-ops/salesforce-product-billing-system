@@ -1,0 +1,132 @@
+<template>
+    <lightning-card title="Product & Billing">
+        <div class="slds-p-around_small">
+            <lightning-combobox
+                name="pricebook"
+                label="Select Price Book"
+                value={selectedPricebook}
+                placeholder="Choose Price Book"
+                options={pricebookOptions}
+                onchange={handlePricebookChange}>
+            </lightning-combobox>
+
+            <div class="slds-m-top_small slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-1 slds-p-right_small">
+                    <lightning-button label="Scan Product (Camera)"
+                                      onclick={handleScanClick}
+                                      class="slds-m-right_small">
+                    </lightning-button>
+
+                    <!-- hidden file input used for camera upload -->
+                    <input type="file" accept="image/*" 
+                           onchange={handleFileChange}
+                           data-id="fileInput"
+                           style="display:none" />
+
+                    <lightning-input type="text"
+                                     label="Manual Product Code"
+                                     value={manualCode}
+                                     onchange={handleManualCode}
+                                     class="slds-m-left_small">
+                    </lightning-input>
+
+                    <lightning-button label="Add Product"
+                                      onclick={handleAddManual}
+                                      class="slds-m-left_small">
+                    </lightning-button>
+                </div>
+            </div>
+
+            <div class="slds-m-top_small">
+                <lightning-radio-group
+                    name="gstMode"
+                    label="Billing Mode"
+                    options={gstModeOptions}
+                    value={gstMode}
+                    onchange={handleGstModeChange}>
+                </lightning-radio-group>
+            </div>
+          
+            <!-- New Billing/Shipping State inputs -->
+<div class="slds-m-top_small slds-grid slds-gutters">
+    <div class="slds-col">
+        <lightning-input type="text" label="Billing State" data-id="billingState"></lightning-input>
+    </div>
+    <div class="slds-col">
+        <lightning-input type="text" label="Shipping State" data-id="shippingState"></lightning-input>
+    </div>
+</div>
+
+            <div class="slds-m-top_small">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr class="slds-text-title_caps">
+                            <th>Product</th>
+                            <th>Code</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>GST %</th>
+                            <th>CGST</th>
+                            <th>SGST</th>
+                            <th>IGST</th>
+                            <th>Expiry</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <!-- loop for each line -->
+                        <template for:each={lines} for:item="line">
+                            <tr key={line.productCode} class={line.rowClass}>
+                                <td>{line.name}</td>
+                                <td>{line.productCode}</td>
+                                <td>
+                                    <lightning-input type="number"
+                                                     value={line.quantity}
+                                                     data-productcode={line.productCode}
+                                                     onchange={handleQtyChange}
+                                                     min="1">
+                                    </lightning-input>
+                                </td>
+                                <td>{line.unitPrice}</td>
+                                <td>{line.gstPercent}</td>
+                                <td>{line.cgstAmount}</td>
+                                <td>{line.sgstAmount}</td>
+                                <td>{line.igstAmount}</td>
+                                <td style="color: red;">{line.expiryDate}
+    <template if:true={line.isNearExpiry}>
+        <div class="slds-text-color_error slds-m-top_xx-small">
+            ⚠️ Item going to expire soon
+        </div>
+    </template>
+</td>
+                                <td>
+                                    <lightning-button-icon icon-name="utility:delete"
+                                                           alternative-text="Remove"
+                                                           title="Remove"
+                                                           onclick={handleRemoveLine}
+                                                           data-productcode={line.productCode}>
+                                    </lightning-button-icon>
+                                </td>
+                            </tr>
+                        </template>
+
+                        <!-- totals row -->
+                        <template if:true={lines.length}>
+                            <tr>
+                                <td colspan="2"><strong>Totals</strong></td>
+                                <td>{totalQuantity}</td>
+                                <td>{subTotal}</td>
+                                <td></td>
+                                <td>{totalCgst}</td>
+                                <td>{totalSgst}</td>
+                                <td>{totalIgst}</td>
+                                <td colspan="2"><strong>Grand Total: {grandTotal}</strong></td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </lightning-card>
+</template>

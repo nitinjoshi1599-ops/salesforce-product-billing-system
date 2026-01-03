@@ -1,0 +1,38 @@
+<template>
+    <lightning-card title=" Calculator" icon-name="custom:custom14">
+        <lightning-layout>
+            <lightning-layout-item>
+                <lightning-input label="FirstNumber" name="fnum" type="number" onchange={handlechange}></lightning-input>
+                  <lightning-input label="SecondNumber" name="snum" type="number" onchange={handlechange}></lightning-input>
+        </lightning-layout-item>
+        </lightning-layout>
+
+        <lightning-layout>
+            <lightning-layout-item>
+           <lightning-button-group>
+                <lightning-button label= "add" name="add" onclick={calculation}></lightning-button>
+                <lightning-button label= "subtract" name="sub" onclick={calculation}></lightning-button>
+                <lightning-button label= "multiply" name="mul" onclick={calculation}></lightning-button>
+                <lightning-button label= "divide" name="div" onclick={calculation}></lightning-button>
+                    </lightning-button-group>
+                    <lightning-layout-item>
+                        <lightning-button variant="success" label= "Preview" name="Preview" onclick={calculation}></lightning-button>
+                    </lightning-layout-item>
+            
+        </lightning-layout-item>
+        </lightning-layout>
+                
+        <lightning-formatted-text value={result}></lightning-formatted-text>
+    </lightning-card>
+    <template if:true={showResult}>
+        <ul>
+            <template iterator:it={previousShowResult}>
+                <li key={it.value}>{it.value}
+                    <lightning-formatted-text value={it.value}></lightning-formatted-text>
+                </li>
+                </template>
+        </ul>
+        </template>
+
+        </lightning-card>
+ </template>

@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Smallest Of Three Numbers">
+        <p>Result = {Result}  </p>
+        <lightning-input label='Enter the first number' onchange={changeFirstNo}></lightning-input>
+        <lightning-input label='Enter the second number' onchange={changeSecondNo}></lightning-input>
+        <lightning-input label='Enter the third number' onchange={changeThirdNo}></lightning-input>
+
+        <lightning-button label="Find Smallest" onclick={findSmallest} class="slds-m-left_x-small"></lightning-button>
+        </lightning-card>
+</template>
