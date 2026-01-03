@@ -1,18 +1,71 @@
-# Salesforce DX Project: Next Steps
+# Salesforce Product Billing Application (LWC)
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+## 📌 Project Overview
+This project is a **Salesforce Product Billing Application** developed using **Lightning Web Components (LWC)** and **Apex**.  
+It is designed to handle product selection, pricing, GST calculation, and billing logic by integrating with the **Salesforce Price Book**.
 
-## How Do You Plan to Deploy Your Changes?
+The project demonstrates hands-on Salesforce development skills including UI development, business logic implementation, validations, and automation concepts.
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+---
 
-## Configure Your Salesforce DX Project
+##  Key Features
+- Lightning Web Component (LWC) based billing UI
+- Integration with Salesforce **Price Book** for product & pricing data
+- GST calculation logic:
+  - IGST
+  - CGST
+  - SGST (based on billing & shipping state)
+- GST toggle (With GST / Without GST)
+- Manual product entry support
+- Duplicate product validation
+- Product expiry date alerts
+- Near-expiry product warning logic
+- Clean and modular LWC component structure
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+---
 
-## Read All About It
+##  Tech Stack & Skills Used
+- **Salesforce Apex**
+- **Lightning Web Components (LWC)**
+- **SOQL**
+- **Salesforce DX**
+- **JavaScript, HTML**
+- **Salesforce Price Book**
+- **Validation Rules**
+- **Debugging & Testing**
+- **Git & GitHub**
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+
+---
+
+
+##  Business Use Case
+This application helps automate product billing in Salesforce by:
+- Ensuring accurate tax calculation
+- Preventing duplicate product entries
+- Alerting users about near-expiry products
+- Providing a structured and scalable billing solution
+
+---
+
+##  Testing & Quality
+- Bulk-safe logic followed
+- Validations implemented to prevent incorrect data entry
+- LWC test components included
+- Debugging performed using Salesforce Developer tools
+
+---
+
+## 👤 Author
+**Nitin Joshi**  
+Salesforce Developer  
+Salesforce Platform Developer I (PD1 –Certified)  
+
+ Email: nitinjoshi1599@gmail.com  
+ LinkedIn: https://www.linkedin.com/in/nitinjoshii  
+ Trailhead: https://www.salesforce.com/trailblazer/tqj8gcw7inj2t8eoxe
+
+---
+
+##  Note
+This project is created for **learning, demonstration, and interview purposes** and follows Salesforce development best practices.
